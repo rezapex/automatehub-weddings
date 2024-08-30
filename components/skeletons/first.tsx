@@ -10,13 +10,13 @@ export const SkeletonOne = () => {
       <div className=" w-full md:w-[90%] p-5  mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
         <div className="flex flex-1 w-full h-full flex-col space-y-2 opacity-20 dark:opacity-60 ">
           <UserMessage>
-            I need help finding a venue for my wedding. We're looking for something outdoorsy with a capacity of 150 guests.
+            I need help finding a venue for my wedding. We&apos;re looking for something outdoorsy with a capacity of 150 guests.
           </UserMessage>
           <AIMessage>
-            Certainly! I'd be happy to help you find the perfect outdoor wedding venue. Could you please provide me with your preferred location and budget range?
+            Certainly! I&apos;d be happy to help you find the perfect outdoor wedding venue. Could you please provide me with your preferred location and budget range?
           </AIMessage>
           <UserMessage>
-            We're looking in the San Francisco Bay Area, and our budget is around $10,000 for the venue.
+            We&apos;re looking in the San Francisco Bay Area, and our budget is around $10,000 for the venue.
           </UserMessage>
           {/* <AIMessage>
             Great! I've found several options that match your criteria. Here are the top 3:

@@ -12,7 +12,7 @@ export const Testimonials = () => {
     <div className="relative z-20 py-10 md:py-40">
       <Heading as="h2">Loved by Couples and Planners!</Heading>
       <Subheading className="text-center max-w-lg mx-auto">
-        Our wedding planning platform is loved by couples and planners worldwide. We've helped thousands create their dream weddings, and our community raves about us on social media.
+        Our wedding planning platform is loved by couples and planners worldwide. We&apos;ve helped thousands create their dream weddings, and our community raves about us on social media.
       </Subheading>
       <TestimonialGrid />
     </div>
