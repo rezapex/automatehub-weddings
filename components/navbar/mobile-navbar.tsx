@@ -9,7 +9,7 @@ import { Logo } from "../Logo";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { ModeToggle } from "../mode-toggle";
 
-export const MobileNavbar = ({ navItems }: any) => {
+export const MobileNavbar = ({ navItems, isLoggedIn }: any) => {
   const [open, setOpen] = useState(false);
 
   const { scrollY } = useScroll();
@@ -29,7 +29,7 @@ export const MobileNavbar = ({ navItems }: any) => {
       className={cn(
         "flex justify-between bg-white dark:bg-neutral-900 items-center w-full rounded-full px-2.5 py-1.5 transition duration-200",
         showBackground &&
-        "bg-neutral-50 dark:bg-neutral-900 shadow-[0px_-2px_0px_0px_var(--neutral-100),0px_2px_0px_0px_var(--neutral-100)] dark:shadow-[0px_-2px_0px_0px_var(--neutral-800),0px_2px_0px_0px_var(--neutral-800)]"
+          "bg-neutral-50 dark:bg-neutral-900 shadow-[0px_-2px_0px_0px_var(--neutral-100),0px_2px_0px_0px_var(--neutral-100)] dark:shadow-[0px_-2px_0px_0px_var(--neutral-800),0px_2px_0px_0px_var(--neutral-800)]",
       )}
     >
       <Logo />
@@ -83,12 +83,35 @@ export const MobileNavbar = ({ navItems }: any) => {
             ))}
           </div>
           <div className="flex flex-row w-full items-start gap-2.5 px-8 py-4 rounded-lg">
-            <Button as={Link} href="/signup" className="rounded-md">
-              Sign Up
-            </Button>
-            <Button variant="simple" as={Link} href="/login" className="rounded-md">
-              Login
-            </Button>
+            {isLoggedIn ? (
+              <>
+                <Button as={Link} href="/account" className="rounded-md">
+                  Account
+                </Button>
+                <Button
+                  variant="simple"
+                  as={Link}
+                  href="/signout"
+                  className="rounded-md"
+                >
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button as={Link} href="/signup" className="rounded-md">
+                  Sign Up
+                </Button>
+                <Button
+                  variant="simple"
+                  as={Link}
+                  href="/login"
+                  className="rounded-md"
+                >
+                  Login
+                </Button>
+              </>
+            )}
           </div>
         </div>
       )}

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { AuthLayout } from "@/layouts/auth-layout";
 import { NavBar } from "@/components/navbar";
@@ -22,7 +22,9 @@ export default function AuthXLayout({
   }
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
+    <div
+      className={`min-h-screen ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}
+    >
       <NavBar />
       <AuthLayout>
         <main className="flex h-full min-h-screen w-full pt-16">

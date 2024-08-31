@@ -27,7 +27,7 @@ export const Hero = () => {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     if (video) {
@@ -77,7 +77,9 @@ export const Hero = () => {
         }}
         className="text-2xl md:text-4xl lg:text-8xl font-semibold max-w-6xl mx-auto text-center mt-6 relative z-10"
       >
-        <Balancer>Wedding Planning. <span className="text-purple-400">Made Easy.</span></Balancer>
+        <Balancer>
+          Wedding Planning. <span className="text-purple-400">Made Easy.</span>
+        </Balancer>
       </motion.h1>
       <motion.p
         initial={{
@@ -96,7 +98,9 @@ export const Hero = () => {
         className="text-center mt-6 text-base md:text-xl text-muted dark:text-muted-dark max-w-3xl mx-auto relative z-10"
       >
         <Balancer>
-          Our AI-powered platform simplifies every aspect of wedding planning, from venue selection to guest management, making your special day truly unforgettable.
+          Our AI-powered platform simplifies every aspect of wedding planning,
+          from venue selection to guest management, making your special day
+          truly unforgettable.
         </Balancer>
       </motion.p>
       <motion.div

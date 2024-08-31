@@ -52,7 +52,7 @@ export function LoginForm({ providers }: { providers: any }) {
       console.log("submitted form", values);
       // TODO: Implement your login logic here
       // After successful login, redirect to dashboard
-      router.push('/dashboard');
+      router.push("/dashboard");
     } catch (e) {
       console.error("Error during login:", e);
     }
@@ -60,7 +60,7 @@ export function LoginForm({ providers }: { providers: any }) {
 
   const handleProviderSignIn = async (providerId: string) => {
     try {
-      const result = await signIn(providerId, { callbackUrl: '/dashboard' });
+      const result = await signIn(providerId, { callbackUrl: "/dashboard" });
       if (result?.error) {
         console.error(`Error during ${providerId} sign-in:`, result.error);
       }
@@ -157,13 +157,12 @@ export function LoginForm({ providers }: { providers: any }) {
 
                 <div>
                   <Button className="w-full">Sign in</Button>
-                  <p
-                    className={cn(
-                      "text-sm text-center mt-4"
-                    )}
-                  >
+                  <p className={cn("text-sm text-center mt-4")}>
                     Don&apos;t have an account?
-                    <Link href="/signup" className="text-black dark:text-white underline ml-2">
+                    <Link
+                      href="/signup"
+                      className="text-black dark:text-white underline ml-2"
+                    >
                       Sign up
                     </Link>
                   </p>
@@ -185,22 +184,25 @@ export function LoginForm({ providers }: { providers: any }) {
                   </span>
                 </div>
               </div>
-
               <div className="mt-6 grid grid-cols-2 gap-4">
                 {providers &&
-                  Object.values(providers).map((provider: any) => (
-                    <Button
-                      key={provider.name}
-                      onClick={() => handleProviderSignIn(provider.id)}
-                      className="w-full py-1.5"
-                    >
-                      {provider.name === 'Google' && <IconBrandGoogle className="h-5 w-5 mr-2" />}
-                      {provider.name === 'GitHub' && <IconBrandGithub className="h-5 w-5 mr-2" />}
-                      <span className="text-sm font-semibold leading-6">
+                  Object.entries(providers)
+                    .filter(([key]) => key === "google" || key === "github")
+                    .map(([key, provider]: [string, any]) => (
+                      <Button
+                        key={provider.name}
+                        onClick={() => handleProviderSignIn(provider.id)}
+                        className="w-full py-1.5"
+                      >
+                        {key === "google" && (
+                          <IconBrandGoogle className="h-5 w-5 mr-2" />
+                        )}
+                        {key === "github" && (
+                          <IconBrandGithub className="h-5 w-5 mr-2" />
+                        )}
                         {provider.name}
-                      </span>
-                    </Button>
-                  ))}
+                      </Button>
+                    ))}
               </div>
 
               <p className="text-neutral-600 dark:text-neutral-400 text-sm text-center mt-8">

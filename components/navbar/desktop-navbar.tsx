@@ -19,9 +19,10 @@ type Props = {
     title: string;
     target?: "_blank";
   }[];
+  isLoggedIn: boolean;
 };
 
-export const DesktopNavbar = ({ navItems }: Props) => {
+export const DesktopNavbar = ({ navItems, isLoggedIn }: Props) => {
   const { scrollY } = useScroll();
 
   const [showBackground, setShowBackground] = useState(false);
@@ -38,7 +39,7 @@ export const DesktopNavbar = ({ navItems }: Props) => {
       className={cn(
         "w-full flex relative justify-between px-4 py-2 rounded-full bg-transparent transition duration-200",
         showBackground &&
-          "bg-neutral-50 dark:bg-neutral-900 shadow-[0px_-2px_0px_0px_var(--neutral-100),0px_2px_0px_0px_var(--neutral-100)] dark:shadow-[0px_-2px_0px_0px_var(--neutral-800),0px_2px_0px_0px_var(--neutral-800)]"
+          "bg-neutral-50 dark:bg-neutral-900 shadow-[0px_-2px_0px_0px_var(--neutral-100),0px_2px_0px_0px_var(--neutral-100)] dark:shadow-[0px_-2px_0px_0px_var(--neutral-800),0px_2px_0px_0px_var(--neutral-800)]",
       )}
     >
       <AnimatePresence>
@@ -66,12 +67,25 @@ export const DesktopNavbar = ({ navItems }: Props) => {
       </div>
       <div className="flex space-x-2 items-center">
         <ModeToggle />
-        <Button variant="simple" as={Link} href="/login">
-          Login
-        </Button>
-        <Button as={Link} href="/signup">
-          Sign Up
-        </Button>
+        {isLoggedIn ? (
+          <>
+            <Button variant="simple" as={Link} href="/billing">
+              Account
+            </Button>
+            <Button as={Link} href="/">
+              Sign Out
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button variant="simple" as={Link} href="/login">
+              Login
+            </Button>
+            <Button as={Link} href="/signup">
+              Sign Up
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );
