@@ -37,7 +37,7 @@ const formSchema = z.object({
 
 export type LoginUser = z.infer<typeof formSchema>;
 
-export function LoginForm() {
+export function LoginForm({ providers }: { providers: any }) {
   const router = useRouter();
   const form = useForm<LoginUser>({
     resolver: zodResolver(formSchema),
@@ -58,25 +58,14 @@ export function LoginForm() {
     }
   }
 
-  const handleGoogleSignIn = async () => {
+  const handleProviderSignIn = async (providerId: string) => {
     try {
-      const result = await signIn('google', { callbackUrl: '/dashboard' });
+      const result = await signIn(providerId, { callbackUrl: '/dashboard' });
       if (result?.error) {
-        console.error("Error during Google sign-in:", result.error);
+        console.error(`Error during ${providerId} sign-in:`, result.error);
       }
     } catch (error) {
-      console.error("Error during Google sign-in:", error);
-    }
-  };
-
-  const handleGithubSignIn = async () => {
-    try {
-      const result = await signIn('github', { callbackUrl: '/dashboard' });
-      if (result?.error) {
-        console.error("Error during GitHub sign-in:", result.error);
-      }
-    } catch (error) {
-      console.error("Error during GitHub sign-in:", error);
+      console.error(`Error during ${providerId} sign-in:`, error);
     }
   };
 
@@ -116,6 +105,7 @@ export function LoginForm() {
                             <input
                               id="email"
                               type="email"
+                              autoComplete="username"
                               placeholder="hello@johndoe.com"
                               className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
                               {...field}
@@ -169,11 +159,11 @@ export function LoginForm() {
                   <Button className="w-full">Sign in</Button>
                   <p
                     className={cn(
-                      "text-sm text-neutral-500 text-center mt-4 text-muted dark:text-muted-dark"
+                      "text-sm text-center mt-4"
                     )}
                   >
-                    Don&apos;t have an account?{" "}
-                    <Link href="/signup" className="text-black dark:text-white">
+                    Don&apos;t have an account?
+                    <Link href="/signup" className="text-black dark:text-white underline ml-2">
                       Sign up
                     </Link>
                   </p>
@@ -197,18 +187,20 @@ export function LoginForm() {
               </div>
 
               <div className="mt-6 grid grid-cols-2 gap-4">
-                <Button onClick={handleGoogleSignIn} className="w-full py-1.5">
-                  <IconBrandGoogle className="h-5 w-5 mr-2" />
-                  <span className="text-sm font-semibold leading-6">
-                    Google
-                  </span>
-                </Button>
-                <Button onClick={handleGithubSignIn} className="w-full py-1.5">
-                  <IconBrandGithub className="h-5 w-5 mr-2" />
-                  <span className="text-sm font-semibold leading-6">
-                    Github
-                  </span>
-                </Button>
+                {providers &&
+                  Object.values(providers).map((provider: any) => (
+                    <Button
+                      key={provider.name}
+                      onClick={() => handleProviderSignIn(provider.id)}
+                      className="w-full py-1.5"
+                    >
+                      {provider.name === 'Google' && <IconBrandGoogle className="h-5 w-5 mr-2" />}
+                      {provider.name === 'GitHub' && <IconBrandGithub className="h-5 w-5 mr-2" />}
+                      <span className="text-sm font-semibold leading-6">
+                        {provider.name}
+                      </span>
+                    </Button>
+                  ))}
               </div>
 
               <p className="text-neutral-600 dark:text-neutral-400 text-sm text-center mt-8">

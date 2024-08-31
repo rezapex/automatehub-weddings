@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Link } from "next-view-transitions";
 import { useEffect, useRef } from "react";
+import LandingHero from "./landing-hero";
 
 export const Hero = () => {
   const router = useRouter();
@@ -128,7 +129,8 @@ export const Hero = () => {
       <div className="p-4 border border-neutral-200 bg-neutral-100 dark:bg-neutral-800 dark:border-neutral-700 rounded-[32px] mt-20 relative">
         <div className="absolute inset-x-0 bottom-0 h-40 w-full bg-gradient-to-b from-transparent via-white to-white dark:via-black/50 dark:to-black scale-[1.1] pointer-events-none" />
         <div className="p-2 bg-white dark:bg-black dark:border-neutral-700 border border-neutral-200 rounded-[24px]">
-          <video
+          <LandingHero />
+          {/* <video
             ref={videoRef}
             className="rounded-[20px] w-full h-auto"
             poster="/AutomateHubHero/1.gif"
@@ -140,7 +142,7 @@ export const Hero = () => {
             <source src="/AutomateHubHero/hero.webm" type="video/gif" />
             <source src="/AutomateHubHero/hero.mp4" type="video/gif" />
             Your browser does not support the video tag.
-          </video>
+          </video> */}
         </div>
       </div>
     </div>

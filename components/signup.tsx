@@ -156,6 +156,7 @@ export function SignupForm({ providers }: SignupFormProps) {
                             <input
                               id="email"
                               type="email"
+                              autoComplete="username"
                               placeholder="hello@johndoe.com"
                               className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
                               {...field}
@@ -201,11 +202,11 @@ export function SignupForm({ providers }: SignupFormProps) {
                   <Button className="w-full">Sign Up</Button>
                   <p
                     className={cn(
-                      "text-sm text-neutral-500 text-center mt-4 text-muted dark:text-muted-dark"
+                      "text-sm text-neutral-800 text-center mt-4 text-muted-800 dark:text-muted-dark"
                     )}
                   >
                     Already have an account?{" "}
-                    <Link href="/login" className="text-black dark:text-white">
+                    <Link href="/login" className="text-black dark:text-white underline">
                       Sign in
                     </Link>
                   </p>
@@ -231,13 +232,13 @@ export function SignupForm({ providers }: SignupFormProps) {
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <Button onClick={handleGoogleSignIn} className="w-full py-1.5">
                   <IconBrandGoogle className="h-5 w-5 mr-2" />
-                  <span className="text-sm font-semibold leading-6">
+                  <span className="text-sm font-semibold leading-6 text-white dark:text-neutral-200">
                     Google
                   </span>
                 </Button>
                 <Button onClick={handleGithubSignIn} className="w-full py-1.5">
                   <IconBrandGithub className="h-5 w-5 mr-2" />
-                  <span className="text-sm font-semibold leading-6">
+                  <span className="text-sm font-semibold leading-6 text-white dark:text-neutral-200">
                     Github
                   </span>
                 </Button>

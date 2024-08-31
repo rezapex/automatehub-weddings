@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { GeistSans } from "geist/font/sans";
-import { NavBar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
 import { Footer } from "@/components/footer";
+import { NavBar } from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "AutomateHub",
@@ -14,16 +14,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function MarketingLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <main>
+    <div className={GeistSans.className}>
       <NavBar />
-      {children}
+      <main>{children}</main>
       <Footer />
-    </main>
+    </div>
   );
 }

@@ -228,7 +228,7 @@ function Testimonial({
             alt={name}
           />
           <div>
-            <h3 className="text-sm  font-medium text-neutral-500 dark:text-neutral-300">
+            <h3 className="text-sm font-medium text-neutral-500 dark:text-neutral-300">
               {name}
             </h3>
             <p className="text-sm font-normal text-neutral-500 dark:text-neutral-300">
@@ -236,7 +236,7 @@ function Testimonial({
             </p>
           </div>
         </div>
-        <p className="text-base text-muted mt-4 dark:text-muted-dark">
+        <p className="text-base testimonial-quote mt-4">
           {quote}
         </p>
       </div>

@@ -82,11 +82,11 @@ export const MobileNavbar = ({ navItems }: any) => {
               </>
             ))}
           </div>
-          <div className="flex flex-row w-full items-start gap-2.5  px-8 py-4 ">
-            <Button as={Link} href="/signup">
+          <div className="flex flex-row w-full items-start gap-2.5 px-8 py-4 rounded-lg">
+            <Button as={Link} href="/signup" className="rounded-md">
               Sign Up
             </Button>
-            <Button variant="simple" as={Link} href="/login">
+            <Button variant="simple" as={Link} href="/login" className="rounded-md">
               Login
             </Button>
           </div>

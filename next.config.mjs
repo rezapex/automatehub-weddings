@@ -4,8 +4,20 @@ import remarkGfm from "remark-gfm";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { domains: ["i.pravatar.cc", "images.unsplash.com"] },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
   pageExtensions: ["ts", "tsx", "mdx"],
+
 };
 
 const withMDX = nextMDX({

@@ -26,9 +26,9 @@ export function NavBarItem({
     <Link
       href={href}
       className={cn(
-        "flex items-center justify-center  text-sm leading-[110%] px-4 py-2 rounded-md hover:bg-[#F5F5F5] dark:hover:bg-neutral-800 hover:text-black text-muted dark:text-muted-dark",
+        "flex items-center justify-center text-sm leading-[110%] px-4 py-2 rounded-md hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white text-black dark:text-white",
         (active || pathname?.includes(href)) &&
-          "bg-gray-100 dark:bg-neutral-800 text-black",
+        "bg-white dark:bg-black text-black dark:text-white",
         className
       )}
       target={target}
