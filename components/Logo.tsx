@@ -7,8 +7,8 @@ export const Logo = () => {
       href="/"
       className="font-bold flex items-center text-lg mr-4 text-black dark:text-white px-2 py-1 relative z-20"
     >
-      <span className="font-medium">Automate</span>
-      <span className="font-extrabold">Hub.</span>
+      <span className="font-bold">Bridal</span>
+      <span className="font-bold">Bliss</span>
     </Link>
   );
 };

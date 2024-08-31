@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { signIn } from "next-auth/react";
 
 import {
   Form,
@@ -15,7 +16,7 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
-import { IconBrandGithub } from "@tabler/icons-react";
+import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 import Password from "./password";
 import { Button } from "./button";
 import { Logo } from "./Logo";
@@ -37,6 +38,7 @@ const formSchema = z.object({
 export type LoginUser = z.infer<typeof formSchema>;
 
 export function LoginForm() {
+  const router = useRouter();
   const form = useForm<LoginUser>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,8 +50,35 @@ export function LoginForm() {
   async function onSubmit(values: LoginUser) {
     try {
       console.log("submitted form", values);
-    } catch (e) {}
+      // TODO: Implement your login logic here
+      // After successful login, redirect to dashboard
+      router.push('/dashboard');
+    } catch (e) {
+      console.error("Error during login:", e);
+    }
   }
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signIn('google', { callbackUrl: '/dashboard' });
+      if (result?.error) {
+        console.error("Error during Google sign-in:", result.error);
+      }
+    } catch (error) {
+      console.error("Error during Google sign-in:", error);
+    }
+  };
+
+  const handleGithubSignIn = async () => {
+    try {
+      const result = await signIn('github', { callbackUrl: '/dashboard' });
+      if (result?.error) {
+        console.error("Error during GitHub sign-in:", result.error);
+      }
+    } catch (error) {
+      console.error("Error during GitHub sign-in:", error);
+    }
+  };
 
   return (
     <Form {...form}>
@@ -143,7 +172,7 @@ export function LoginForm() {
                       "text-sm text-neutral-500 text-center mt-4 text-muted dark:text-muted-dark"
                     )}
                   >
-                    Don&apos; have an account?{" "}
+                    Don&apos;t have an account?{" "}
                     <Link href="/signup" className="text-black dark:text-white">
                       Sign up
                     </Link>
@@ -167,9 +196,15 @@ export function LoginForm() {
                 </div>
               </div>
 
-              <div className="mt-6 w-full flex items-center justify-center">
-                <Button onClick={() => {}} className="w-full py-1.5">
-                  <IconBrandGithub className="h-5 w-5" />
+              <div className="mt-6 grid grid-cols-2 gap-4">
+                <Button onClick={handleGoogleSignIn} className="w-full py-1.5">
+                  <IconBrandGoogle className="h-5 w-5 mr-2" />
+                  <span className="text-sm font-semibold leading-6">
+                    Google
+                  </span>
+                </Button>
+                <Button onClick={handleGithubSignIn} className="w-full py-1.5">
+                  <IconBrandGithub className="h-5 w-5 mr-2" />
                   <span className="text-sm font-semibold leading-6">
                     Github
                   </span>

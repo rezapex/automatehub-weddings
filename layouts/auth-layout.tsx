@@ -7,34 +7,18 @@ import { FeaturedTestimonials } from "@/components/featured-testimonials";
 
 export function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <div className="w-full min-h-screen grid grid-cols-1 md:grid-cols-2">
+    <div className="w-full min-h-screen flex">
+      {/* Sidebar */}
+      <aside className="w-64 bg-gray-100 p-4">
+        {/* Add your sidebar content here */}
+        <h2 className="text-xl font-bold mb-4">Sidebar</h2>
+        {/* Add navigation links or other sidebar elements */}
+      </aside>
+
+      {/* Main content */}
+      <main className="flex-1">
         {children}
-        <div className="relative w-full z-20 hidden md:flex border-l border-neutral-100 dark:border-neutral-800 overflow-hidden bg-gray-50 dark:bg-neutral-900 items-center justify-center">
-          <div className="max-w-sm mx-auto">
-            <FeaturedTestimonials />
-            <p
-              className={cn(
-                "font-semibold text-xl text-center text-muted dark:text-muted-dark"
-              )}
-            >
-              Every AI is used by thousands of users
-            </p>
-            <p
-              className={cn(
-                "font-normal text-base text-center text-neutral-500 dark:text-neutral-400 mt-8"
-              )}
-            >
-              With lots of AI applications around, AutomateHub stands out with
-              its state of the art Shitposting capabilities.
-            </p>
-          </div>
-          <HorizontalGradient className="top-20" />
-          <HorizontalGradient className="bottom-20" />
-          <HorizontalGradient className="-right-80 transform rotate-90 inset-y-0 h-full scale-x-150" />
-          <HorizontalGradient className="-left-80 transform rotate-90 inset-y-0 h-full scale-x-150" />
-        </div>
-      </div>
-    </>
+      </main>
+    </div>
   );
 }

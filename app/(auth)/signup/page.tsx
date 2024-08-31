@@ -1,5 +1,6 @@
 import { SignupForm } from "@/components/signup";
 import { Metadata } from "next";
+import { getProviders } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Signup - AutomateHub",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function SignupPage() {
-  return <SignupForm />;
+export default async function SignupPage() {
+  const providers = await getProviders();
+  return <SignupForm providers={providers} />;
 }

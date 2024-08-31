@@ -13,7 +13,7 @@ export default function Home() {
       <Background />
       <Container className="flex min-h-screen flex-col items-center justify-between ">
         <Hero />
-        <Companies />
+        {/* <Companies /> */}
         <Features />
         <GridFeatures />
         <Testimonials />
